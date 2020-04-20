@@ -1,0 +1,31 @@
+{
+  "name": "social-media-dashboard",
+  "version": "1.0.0",
+  "description": "Frontend Mentor - Social media dashboard with theme switcher",
+  "main": "index.html",
+  "scripts": {
+    "scss": "node-sass scss -o css",
+    "watch": "node-sass --watch scss -o css",
+    "server:php": "php -S localhost:3000",
+    "test": "echo \"Warning: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armino-dev/social-media-dashboard.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "react",
+    "javascript"
+  ],
+  "author": "Armino Popp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/armino-dev/social-media-dashboard/issues"
+  },
+  "homepage": "https://github.com/armino-dev/social-media-dashboard#readme",
+  "dependencies": {
+    "node-sass": "^4.13.1"
+  }
+}

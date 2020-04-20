@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$card-top-border: 4px;
+
+$lime-green: hsl(163, 72%, 41%);
+$bright-red: hsl(353, 69%, 56%);
+$facebook-color: hsl(195, 100%, 50%);
+$twitter-color: hsl(203, 89%, 53%);
+$instagram-gradient: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+$youtube-color: hsl(348, 97%, 39%);
+
+$blue-very-dark: hsl(230, 17%, 14%); //very dark blue background and light theme text color
+$blue-dark: hsl(232, 19%, 15%); //dark theme top background pattern
+$blue-dark-desaturated: hsl(228, 28%, 20%); //dark theme card background
+$blue-desaturated: hsl(228, 34%, 66%); //dark theme text
+
+$blue-very-pale: hsl(225, 100%, 98%); //light theme top background pattern
+$blue-light-greyish: hsl(227, 47%, 96%); //light theme card background
+$blue-dark-greyish: hsl(228, 12%, 44%);
+
+$white: hsl(0, 0, 100%); //text color for dark theme and light theme bg
+
+
+$themes: (
+    "light": (
+        "app-bg-color": $white,
+        "top-bg-color": $blue-very-pale,
+        "main-text-color": $blue-dark-greyish,
+        "header-text-color": $blue-very-dark,
+        "theme-switch-bg": hsl(230, 22%, 74%),
+        "card-bg-color": $blue-light-greyish,
+        "facebook-color": $facebook-color,
+        "twitter-color": $twitter-color,
+        "instagram-gradient": $instagram-gradient,
+        "youtube-color": $youtube-color,
+    ),
+    "dark": (
+        "app-bg-color": $blue-very-dark,
+        "top-bg-color": $blue-dark,
+        "main-text-color": $blue-desaturated,
+        "header-text-color": $white,
+        "theme-switch-bg": linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%)),
+        "card-bg-color": $blue-dark-desaturated,
+        "facebook-color": $facebook-color,
+        "twitter-color": $twitter-color,
+        "instagram-gradient": $instagram-gradient,
+        "youtube-color": $youtube-color,
+    ),
+);
+
+@mixin themed() {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function theme($key) {
+    @return map-get($theme-map, $key);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include themed() {
+        color: theme("header-text-color");
+    }
+}
+
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+    width: 100%;
+    @include themed() {
+        background-color: theme("app-bg-color");
+        color: theme("main-text-color");
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h1 {
+        font-size: 24px;
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+}
+
+main,
+.container {
+    padding-top: 10px;
+}
+
+.card-big,
+.card-small {
+    @include themed() {
+        background: theme("card-bg-color");
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.card-big {    
+    position: relative;
+    margin-bottom: 20px;
+    min-height: 215px;
+    display: flex;
+    justify-content: space-between;
+    &.facebook:before, 
+    &.twitter:before, 
+    &.instagram:before, 
+    &.youtube:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-top-left-radius: $card-top-border;
+        border-top-right-radius: $card-top-border;
+        height: $card-top-border;
+        left: 0;
+        top: 0;        
+    }
+    
+    .header,
+    .footer {
+        font-weight: 700;
+    }
+
+    .header {
+        padding-top: 20px;
+    }
+    
+    .footer {
+        @include themed() {
+            color: theme("header-text-color");
+        }
+        font-size: 12px;
+        padding-bottom: 10px;
+    }
+
+    &.facebook:before {
+        @include themed() {
+            background-color: theme("facebook-color");
+        }
+    }
+    &.twitter:before {
+        @include themed() {
+            background-color: theme("twitter-color");
+        }
+    }
+    &.instagram:before {
+        @include themed() {
+            background: theme("instagram-gradient");
+        }
+    }
+    &.youtube:before {
+        @include themed() {
+            background-color: theme("youtube-color");
+        }
+    }
+
+    .body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .number {
+            font-size: 55px;
+            font-weight: 700;
+            @include themed() {
+                color: theme("header-text-color");
+            }
+        }
+        .text {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 11px;
+        }
+    }
+    
+}
+
+.left-side {
+    @include themed() {
+        border-bottom: 1px solid theme("main-text-color");
+    }
+    padding-bottom: 20px;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+    & input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        &:checked + .slider {
+            @include themed() {
+                background: theme("theme-switch-bg");
+            }
+        }
+        // &:focus + .slider {
+        //     box-shadow: 0 0 1px #2196f3;
+        // }
+        &:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+    }
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include themed() {
+        background: theme("theme-switch-bg");
+    }
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    &:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 4px;
+        @include themed() {
+            background-color: theme("top-bg-color");
+        }
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+    &.round {
+        border-radius: 26px;
+        &:before {
+            border-radius: 50%;
+        }
+    }
+}
+
+.attribution {
+    margin-top: 20px;
+    font-size: 11px;
+    text-align: center;
+    a {
+        color: hsl(228, 45%, 44%);
+    }
+}

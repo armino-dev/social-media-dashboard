@@ -1,87 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | [Challenge Name Here]</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <title>Frontend Mentor | Social media dashboard with theme switcher</title>
 </head>
-<body>
+<body class="theme-light">
+  <div id="wrapper">
+    <header>
+      <div class="left-side">
+        <h1>Social Media Dashboard</h1>
+        <p><b>Total Followers: 23,004</b></p>
+      </div>
+      <div class="right-side">
+        <p><b>Dark mode</b></p>
+        <label class="toggle-switch" id="theme-switch">
+          <input type="checkbox" id="theme-switch-checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="card-big facebook">
+          <div class="header">@nathanf</div>
+          <div class="body"><span class="number">1987</span><span class="text">Followers</span></div>
+          <div class="footer">12 Today</div>
+        </div>
+        <div class="card-big twitter">
+          <div class="header">@nathanf</div>
+          <div class="body"><span class="number">1044</span><span class="text">Followers</span></div>
+          <div class="footer">99 Today</div>
+        </div>
+        <div class="card-big instagram">
+          <div class="header">@realnathanf</div>
+          <div class="body">11k Followers</div>
+          <div class="footer">1099 Today</div>
+        </div>
+        <div class="card-big youtube">
+          <div class="header">Nathan F.</div>
+          <div class="body">8239 Subscribers</div>
+          <div class="footer">144 Today</div>
+        </div>
+      </div>
+      <div class="container">
+        <h2>Overview - Today</h2>
+        <div class="card-small">
+          <div class="header">Page Views</div>
+          <div class="body">87</div>
+          <div class="footer">3%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Likes</div>
+          <div class="body">52</div>
+          <div class="footer">2%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Likes</div>
+          <div class="body">5462</div>
+          <div class="footer">2257%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Profile Views</div>
+          <div class="body">52k</div>
+          <div class="footer">1375%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Retweets</div>
+          <div class="body">117</div>
+          <div class="footer">303%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Likes</div>
+          <div class="body">507</div>
+          <div class="footer">553%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Likes</div>
+          <div class="body">107</div>
+          <div class="footer">19%</div>
+        </div>
+        <div class="card-small">
+          <div class="header">Total Views</div>
+          <div class="body">1407</div>
+          <div class="footer">12%</div>
+        </div>
+      </div>
+    </main>
 
-  Social Media Dashboard
-  Total Followers: 23,004
-
-  Dark Mode
-
-  
-
-  @nathanf
-  1987
-  Followers
-  12 Today
-
-  @nathanf
-  1044
-  Followers
-  99 Today
-
-  @realnathanf
-  11k
-  Followers
-  1099 Today
-
-  Nathan F.
-  8239
-  Subscribers
-  144 Today
-
-
-
-  Overview - Today
-
-  Page Views
-  87
-  3%
-
-  Likes
-  52
-  2%
-
-  Likes
-  5462
-  2257%
-
-  Profile Views
-  52k
-  1375%
-
-  Retweets
-  117
-  303%
-
-  Likes
-  507
-  553%
-
-  Likes
-  107
-  19%
-
-  Total Views
-  1407
-  12%
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/armino-dev" title="See Armino's profile on GitHub">Armino</a>.
+    </div>
   </div>
+  <script src="js/index.js"></script>
 </body>
+
 </html>
