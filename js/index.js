@@ -1,4 +1,4 @@
-const app = document.body;
+const app = document.documentElement;
 
 const init = () => {
     try {

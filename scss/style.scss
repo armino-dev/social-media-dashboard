@@ -81,12 +81,23 @@ $themes: (
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: "Inter", sans-serif;
     font-size: 14px;
     @include themed() {
-        background-color: theme("app-bg-color");
+        background: linear-gradient(
+            to bottom,
+            theme("top-bg-color") 0,
+            theme("top-bg-color") 295px,
+            theme("app-bg-color") 295px,
+            theme("app-bg-color") 100%
+        );
+        color: theme("main-text-color");
     }
     min-height: 100vh;
+    width: 100%;
 }
 
 h1,
@@ -100,6 +111,16 @@ h6 {
     }
 }
 
+h1 {
+    font-size: 24px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+h2 {
+    padding-bottom: 25px;
+}
+
 #wrapper {
     position: relative;
     display: flex;
@@ -109,16 +130,6 @@ h6 {
     min-width: 375px;
     max-width: 1440px;
     width: 100%;
-    @include themed() {
-        background: linear-gradient(
-            to bottom,
-            theme("top-bg-color") 0,
-            theme("top-bg-color") 295px,
-            theme("app-bg-color") 295px,
-            theme("app-bg-color") 100%
-        );
-        color: theme("main-text-color");
-    }
 }
 
 header {
@@ -139,18 +150,17 @@ header {
         justify-content: space-between;
         padding-top: 15px;
         padding-bottom: 20px;
-    }
-
-    h1 {
-        font-size: 24px;
-        padding-top: 20px;
-        padding-bottom: 5px;
-    }
+    }    
 }
 
 main,
 .container {
-    padding-top: 10px;
+    padding-top: 10px;    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
 }
 
 .card-big,
@@ -164,7 +174,7 @@ main,
     border-radius: 4px;
     &:hover {
         @include themed() {
-            background: theme("card-bg-hover-color");            
+            background: theme("card-bg-hover-color");
         }
         cursor: pointer;
     }
@@ -283,9 +293,6 @@ main,
     &:last-child {
         margin-bottom: 35px;
     }
-}
-.container h2 {
-    padding-bottom: 25px;
 }
 
 .card-small {
@@ -433,4 +440,32 @@ main,
 
 .align-right {
     align-items: flex-end;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .card-big, .card-small {
+        width: 49%;
+        margin-bottom: 35px !important;
+    }
+}
+
+
+@media only screen and (min-width: 992px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-big, .card-small {
+        width: 24%;
+        margin-bottom: 35px !important;
+    }
 }
