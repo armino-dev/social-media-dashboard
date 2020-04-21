@@ -77,12 +77,14 @@ $themes: (
     @return map-get($theme-map, $key);
 }
 
+
 body {
-    font-family: "Inter", sans-serif;
-    display: flex;
-    width: 100%;
-    height: 100vh;
+    font-family: "Inter", sans-serif;    
     font-size: 14px;
+    @include themed() {
+        background-color: theme("app-bg-color");
+    }
+    min-height: 100vh;
 }
 
 h1,
@@ -101,7 +103,7 @@ h6 {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: auto;
+    height: 100%;
     width: 100%;
     @include themed() {
         background-color: theme("app-bg-color");
@@ -119,6 +121,7 @@ header {
         padding-bottom: 5px;
     }
 }
+
 
 main,
 .container {
@@ -164,6 +167,15 @@ main,
 
     .header {
         padding-top: 20px;
+        display: flex;
+        align-items: center;
+        &:before {
+            content: "";
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;            
+            background-size: cover;
+        }
     }
     
     .footer {
@@ -174,24 +186,49 @@ main,
         padding-bottom: 10px;
     }
 
-    &.facebook:before {
-        @include themed() {
-            background-color: theme("facebook-color");
+    &.facebook{
+        .header:before {            
+            background: url(/images/icon-facebook.svg);            
+        }
+        
+        &:before {
+            @include themed() {
+                background-color: theme("facebook-color");
+            }
         }
     }
-    &.twitter:before {
-        @include themed() {
-            background-color: theme("twitter-color");
+
+    &.twitter{
+        .header:before {            
+            background: url(/images/icon-twitter.svg);           
+        }
+        &:before {
+            @include themed() {
+                background-color: theme("twitter-color");
+            }
         }
     }
-    &.instagram:before {
-        @include themed() {
-            background: theme("instagram-gradient");
+
+    &.instagram{
+        .header:before {            
+            background: url(/images/icon-instagram.svg);           
+        }
+
+        &:before {
+            @include themed() {
+                background: theme("instagram-gradient");
+            }
         }
     }
-    &.youtube:before {
-        @include themed() {
-            background-color: theme("youtube-color");
+    
+    &.youtube{
+        .header:before {            
+            background: url(/images/icon-youtube.svg);           
+        }
+        &:before {        
+            @include themed() {
+                background-color: theme("youtube-color");
+            }
         }
     }
 
@@ -217,7 +254,7 @@ main,
 
 .left-side {
     @include themed() {
-        border-bottom: 1px solid theme("main-text-color");
+        border-bottom: .5px solid theme("main-text-color");
     }
     padding-bottom: 20px;
 }
