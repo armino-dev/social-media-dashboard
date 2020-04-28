@@ -2,6 +2,8 @@
 
 ![Design preview for the Social media dashboard with theme switcher coding challenge](./design/desktop-preview.jpg)
 
+You can see my solution live [here](https://vercel.com/armino-dev/social-media-dashboard/h0vp6c9yv).
+
 ## Welcome! 👋
 
 Thanks for checking out this front-end coding challenge.
